@@ -9,17 +9,10 @@ import {Navbar} from './components/Navbar/Navbar';
 // console.log('Google client id App: '+process.env.REACT_APP_CLIENT_ID);
 
 const App=()=> {
-  // alert('I am rendering');
-  const [ind, setInd] = useState(true);
-
-  const handleReload=()=>{
-    setInd(!ind);
-  }
-
   return (
     <BrowserRouter>
       <Container maxWidth="lg">
-        <Navbar onReload={handleReload}/>
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/auth" element={<Auth/>}/>

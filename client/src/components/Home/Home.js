@@ -22,7 +22,7 @@ const [currentId, setCurrentId] = useState(null);
     <Grow in>
         <CustomGrid container justifyContent="space-between" alignItems="stretch" spacing={3}>
         <Grid xs={12} sm={7}>
-            <Posts currentId={currentId} setCurrentId={setCurrentId}/>
+            <Posts currentId={currentId} setCurrentId={setCurrentId} />
         </Grid>
         <Grid xs={12} sm={4}>
             <Form currentId={currentId} setCurrentId={setCurrentId}/>

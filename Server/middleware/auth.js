@@ -14,7 +14,7 @@ const auth=(req,res,next)=>{
             const decodeData= jwt.decode(token);
             req.userId=decodeData?.sub;
         }
-        next();  // Next function is used to imply that after successful execution of this middleware function, the next function defined in the routes/posts file will be immediately executed.
+        next();  // Next function is used to imply that after successful execution of this middleware function, the next function defined in the routes/posts file will be executed immediately.
     } catch (error) {
         console.log("The following error has happened --> "+error);
     }

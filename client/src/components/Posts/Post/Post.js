@@ -7,15 +7,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useDispatch } from "react-redux";
 import { deletePost,countLike } from "../../../actions/Posts";
-// import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 const Post = (props)=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    
-    // useEffect(() => {
-    //   setLoad((prevLoad)=>!prevLoad);
-    // }, [props.indicator])
+    const location=useLocation();
+
+    useEffect(() => {
+      setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]) // For updating the state based on navigation of pages
     
 
     // Just for checking if the proper object Id is coming or not.

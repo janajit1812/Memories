@@ -5,14 +5,22 @@ import FileBase from 'react-file-base64';
 import { useDispatch } from "react-redux";
 import { createPost,updatePost } from "../../actions/Posts";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const Form = (props) => {
+    const location=useLocation();
     const dispatch=useDispatch();
     const post=useSelector((state)=> props.currentId?state.posts.find((p)=>p._id===props.currentId):null);
     // const posts=useSelector((state)=> state.posts);
     //console.log('The posts array is: '+post);
     const [postData, setPostData] = useState({title: "", message: "", tags: "", selectedFile: ""});
-    const user=JSON.parse(localStorage.getItem('profile'));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    // const user=JSON.parse(localStorage.getItem('profile'));
+
+    // useEffect(() => {
+    //     setUser(JSON.parse(localStorage.getItem('profile')));
+    // }, [location]); // For updating the state based on navigation of pages
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,9 +41,10 @@ const Form = (props) => {
     }
 
     useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('profile')));
       if(props.currentId)
         setPostData(post);
-    }, [post]);
+    }, [post,location]); // For updating the state based on navigation of pages, while location changes. So location is used. On location change every time, the useEffect hook will be triggered resulting in re-rendering of the post component.
     
     if(!user?.result?.name){
         return(

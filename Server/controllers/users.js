@@ -13,6 +13,7 @@ export const signin = async (req,res)=>{
         if(!passwordIsCorrect) res.status(400).json({message: "Invalid Credentials"});
         const token= jwt.sign({email: existingUser.email, id: existingUser._id},'test',{expiresIn: "1h"});
         console.log(existingUser);
+        console.log(token);
         res.status(200).json({result: existingUser, token});
     } catch (error) {
         res.status(500).json({message: "Something went wrong"});
@@ -45,7 +46,9 @@ export const signup= async (req,res) =>{
     }
 }
 
+//Added for Google Auhentication. Section handled in backend using JWt because in new version of GAUTH, no token is available.
 export const googleSignUp=(req,res)=>{
+    console.log('Inside google sign Up');
     try {
         const gData=req.body;
         console.log(gData);

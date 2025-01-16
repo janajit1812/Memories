@@ -6,7 +6,15 @@ import { Grid,CircularProgress } from "@mui/material";
 
 const Posts=(props)=>{
     const posts=useSelector((state)=> state.posts);
-    console.log(posts);
+    // console.log(posts);
+
+    if(!posts){
+        return (
+            <h1>
+                Currently no postcards are available for display.
+            </h1>
+        )
+    }
     return (
             !posts.length ? <CircularProgress/>:(
             <MainContainer>

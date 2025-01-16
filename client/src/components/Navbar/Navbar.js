@@ -14,7 +14,7 @@ const handleClick=()=>{
 }
 
 
-export const Navbar = ({onReload}) => {
+export const Navbar = () => {
   // const user= {"result":{"name":"Janajit", "imageUrl":"https://www.freepik.com/premium-vector/sign-page-abstract-concept-vector-illustration_34376797.html"}};
   // const user=null;
   const dispatch=useDispatch();
@@ -29,7 +29,6 @@ export const Navbar = ({onReload}) => {
     // alert("Clearing the local storage of browser");
     setUser(null);
     dispatch({type: LOGOUT});
-    onReload();
     navigate('/');
   }
   useEffect(() => {
